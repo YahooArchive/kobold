@@ -1,0 +1,46 @@
+{
+  "name": "kobold",
+  "version": "0.9.0",
+  "description": "Visual regression testing framework, comparing screenshots from multiple builds",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover -- _mocha --reporter spec",
+    "docs": "yuidoc ."
+  },
+  "bin": {
+    "kobold": "bin/kobold"
+  },
+  "homepage": "https://github.com/yahoo/kobold",
+  "bugs": "https://github.com/yahoo/kobold/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yahoo/kobold.git"
+  },
+  "keywords": [
+    "compare",
+    "visual-diff",
+    "testing",
+    "preceptor",
+    "blink",
+    "screenshot",
+    "image"
+  ],
+  "author": {
+    "name": "Marcel Erz",
+    "email": "erz@yahoo-inc.com"
+  },
+  "dependencies": {
+    "preceptor-core": "~0.9.0",
+    "blink-diff": "~1.0.1",
+    "kobold-core": "~0.9.0",
+    "log4js": "0.6.20",
+    "promise": "6.0.0",
+    "mocha": "1.21.4"
+  },
+  "devDependencies": {
+    "chai": "1.9.1",
+    "istanbul": "0.3.2",
+    "yuidocjs": "0.3.50"
+  }
+}

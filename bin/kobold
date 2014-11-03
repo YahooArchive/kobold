@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+// Copyright 2014, Yahoo! Inc.
+// Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
+
+var cli = require('../lib/cli');
+
+/**
+ * Runs mocha with arguments
+ *
+ * @param {string[]} argv
+ */
+function runMocha (argv) {
+
+	// Reset arguments
+	process.argv = argv;
+	process.argc = argv.length;
+
+	// Run Mocha
+	require(__dirname + '/../node_modules/.bin/_mocha');
+}
+
+
+// Check number of arguments and possibly bail-out
+if (process.argc < 3) {
+	console.log('Please supply the path to the testing folder.');
+	process.exit(1);
+}
+
+// Parse & Run
+runMocha(cli.prepareEnvironment(process.argv));
+
