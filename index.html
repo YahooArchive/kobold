@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Kobold : Visual regression testing framework, comparing screenshots from multiple builds">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Kobold</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/yahoo/kobold">View on GitHub</a>
+
+          <h1 id="project_title">Kobold</h1>
+          <h2 id="project_tagline">Visual regression testing framework, comparing screenshots from multiple builds</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/yahoo/kobold/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/yahoo/kobold/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="kobold" class="anchor" href="#kobold" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kobold</h1>
+
+<p>Visual regression testing framework, comparing screenshots from multiple builds.</p>
+
+<p><a href="http://travis-ci.org/yahoo/kobold"><img src="https://secure.travis-ci.org/yahoo/kobold.png" alt="Build Status"></a>
+<a href="http://badge.fury.io/js/kobold"><img src="https://badge.fury.io/js/kobold.svg" alt="npm version"></a></p>
+
+<p><a href="https://nodei.co/npm/kobold/"><img src="https://nodei.co/npm/kobold.png?downloads=true" alt="NPM"></a></p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#api-documentation">API-Documentation</a></li>
+<li><a href="#tests">Tests</a></li>
+<li><a href="#project-name">Project Naming</a></li>
+<li><a href="#third-party-libraries">Third-party libraries</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Install this module with the following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm install kobold
+</pre></div>
+
+<p>Add the module to your <code>package.json</code> dependencies:</p>
+
+<div class="highlight highlight-shell"><pre>npm install --save kobold
+</pre></div>
+
+<p>Add the module to your <code>package.json</code> dev-dependencies:</p>
+
+<div class="highlight highlight-shell"><pre>npm install --save-dev kobold
+</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Kobold can be run by executing the bin-script that is located in the <code>bin</code> directory. The only required parameter
+is the path to the folder holding all screens (images/screenshots) that should be tested.</p>
+
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold ./test/ui/regression
+</pre></div>
+
+<p>Instead of implicitly using the last argument as the <code>test-path</code>, you can also be more specific and use the <code>--test-path</code> parameter:</p>
+
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --test-path ./test/ui/regression
+</pre></div>
+
+<p>By default, Kobold will look for three directories:</p>
+
+<ul>
+<li>
+<code>approved</code> - Folder with all previously approved screens. These are the "golden standard" images that will be used to compare them to.</li>
+<li>
+<code>build</code> - Folder with most recent screens taken from an application. This is most likely done by some Selenium tests. These images will be compared to the images in the <code>approved</code> folder.</li>
+<li>
+<code>highlight</code> - Folder holding the results of the latest test-run. Here, the images will highlight the differences between the <code>approved</code>-image and the <code>build</code>-image.</li>
+</ul>
+
+<p>The folder names for <code>approved</code>, <code>build</code>, and <code>highlight</code> can be changed by supplying the parameters <code>--approved-folder</code>, <code>--build-folder</code>, and <code>--highlight-folder</code> respectively:</p>
+
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --approved-folder <span class="s2">"golden"</span> --highlight-folder <span class="s2">"differences"</span> ./test/ui/regression
+</pre></div>
+
+<p>This test-run will look for <code>golden</code> and <code>differences</code> for the <code>approved</code> and <code>highlight</code> folder respectively instead of the default folder names. In this cases <code>build</code> was not changed.</p>
+
+<p>In some cases, the tests should fail when previously approved screens are not anymore available in the recent build. Use the <code>--fail-orphans</code> flag to make these tests fail:</p>
+
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --fail-orphans ./test/ui/regression
+</pre></div>
+
+<p>The <code>--fail-additions</code> flag will fail tests for screens that are new.</p>
+
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --fail-orphans --fail-additions ./test/ui/regression
+</pre></div>
+
+<p>Kobold is built on top of Mocha and therefore can also accept all of its parameters.</p>
+
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --slow <span class="m">3000</span> --fail-orphans --fail-additions --reporter dot --test-path ./test/ui/regression
+</pre></div>
+
+<h2>
+<a id="api-documentation" class="anchor" href="#api-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>API-Documentation</h2>
+
+<p>Generate the documentation with following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm run docs
+</pre></div>
+
+<p>The documentation will be generated in the <code>docs</code> folder of the module root.</p>
+
+<h2>
+<a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<p>Run the tests with the following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm run <span class="nb">test</span>
+</pre></div>
+
+<p>The code-coverage will be written to the <code>coverage</code> folder in the module root.</p>
+
+<h2>
+<a id="project-name" class="anchor" href="#project-name" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Name</h2>
+
+<p>A Kobold is a gnome that can make itself invisible and is often the source of nuisances, pretty much like visual regressions.</p>
+
+<h2>
+<a id="third-party-libraries" class="anchor" href="#third-party-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third-party libraries</h2>
+
+<p>The following third-party libraries are used by this module:</p>
+
+<h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<ul>
+<li>blink-diff: <a href="https://github.com/yahoo/blink-diff">https://github.com/yahoo/blink-diff</a>
+</li>
+<li>preceptor-core: <a href="https://github.com/yahoo/preceptor-core">https://github.com/yahoo/preceptor-core</a>
+</li>
+<li>kobold-core: <a href="https://github.com/yahoo/kobold-core">https://github.com/yahoo/kobold-core</a>
+</li>
+<li>log4js: <a href="https://github.com/nomiddlename/log4js-node">https://github.com/nomiddlename/log4js-node</a>
+</li>
+<li>promise: <a href="https://github.com/then/promise">https://github.com/then/promise</a>
+</li>
+<li>mocha: <a href="https://github.com/visionmedia/mocha">https://github.com/visionmedia/mocha</a>
+</li>
+</ul>
+
+<h3>
+<a id="dev-dependencies" class="anchor" href="#dev-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dev-Dependencies</h3>
+
+<ul>
+<li>chai: <a href="http://chaijs.com">http://chaijs.com</a>
+</li>
+<li>istanbul: <a href="https://github.com/gotwarlost/istanbul">https://github.com/gotwarlost/istanbul</a>
+</li>
+<li>yuidocjs: <a href="https://github.com/yui/yuidoc">https://github.com/yui/yuidoc</a>
+</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License</p>
+
+<p>Copyright 2014 Yahoo Inc.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Kobold maintained by <a href="https://github.com/yahoo">yahoo</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-56408730-7");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
