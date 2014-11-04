@@ -3,6 +3,23 @@ Kobold
 
 Visual regression testing framework, comparing screenshots from multiple builds.
 
+
+[![Build Status](https://secure.travis-ci.org/yahoo/kobold.png)](http://travis-ci.org/yahoo/kobold)
+[![npm version](https://badge.fury.io/js/kobold.svg)](http://badge.fury.io/js/kobold)
+
+[![NPM](https://nodei.co/npm/kobold.png?downloads=true)](https://nodei.co/npm/kobold/)
+
+
+**Table of Contents**
+* [Installation](#installation)
+* [Usage](#usage)
+* [API-Documentation](#api-documentation)
+* [Tests](#tests)
+* [Project Naming](#project-name)
+* [Third-party libraries](#third-party-libraries)
+* [License](#license)
+
+
 ##Installation
 
 Install this module with the following command:
