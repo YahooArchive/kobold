@@ -41,11 +41,16 @@
 
 <p><a href="https://nodei.co/npm/kobold/"><img src="https://nodei.co/npm/kobold.png?downloads=true" alt="NPM"></a></p>
 
+<p><a href="http://yahoo.github.io/kobold/docs/">API-Documentation</a></p>
+
+<p><a href="http://yahoo.github.io/kobold/coverage/lcov-report/">Coverage Report</a></p>
+
 <p><strong>Table of Contents</strong></p>
 
 <ul>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage">Usage</a></li>
+<li><a href="#results">Results</a></li>
 <li><a href="#api-documentation">API-Documentation</a></li>
 <li><a href="#tests">Tests</a></li>
 <li><a href="#project-name">Project Naming</a></li>
@@ -117,6 +122,22 @@ is the path to the folder holding all screens (images/screenshots) that should b
 
 <div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --slow <span class="m">3000</span> --fail-orphans --fail-additions --reporter dot --test-path ./test/ui/regression
 </pre></div>
+
+<h2>
+<a id="results" class="anchor" href="#results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results</h2>
+
+<p>Kobold creates a regular test report as if the tests were written, and it creates the following images, comparing the approved (left) with the build screenshot (right), pointing out the differences (middle).</p>
+
+<ul>
+<li>Hidden or lost section <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_hidden_regression.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_hidden_regression.png" alt="Screen1"></a>
+</li>
+<li>Messed-up sorting <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_sorting_regression.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_sorting_regression.png" alt="Screen1"></a>
+</li>
+<li>Styling regressions <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_style_regression.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_style_regression.png" alt="Screen1"></a>
+</li>
+<li>Text formatting <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_text_regression.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_text_regression.png" alt="Screen1"></a>
+</li>
+</ul>
 
 <h2>
 <a id="api-documentation" class="anchor" href="#api-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>API-Documentation</h2>
