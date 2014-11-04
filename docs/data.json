@@ -1,0 +1,638 @@
+{
+    "project": {
+        "name": "kobold",
+        "description": "Visual regression testing framework, comparing screenshots from multiple builds",
+        "version": "0.9.0"
+    },
+    "files": {
+        "lib/cli.js": {
+            "name": "lib/cli.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/kobold.js": {
+            "name": "lib/kobold.js",
+            "modules": {},
+            "classes": {
+                "Kobold": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "index.js": {
+            "name": "index.js",
+            "modules": {},
+            "classes": {
+                "Runner": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Kobold": {
+            "name": "Kobold",
+            "shortname": "Kobold",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "lib/kobold.js",
+            "line": 15,
+            "itemtype": "property",
+            "type": "Logger"
+        },
+        "Runner": {
+            "name": "Runner",
+            "shortname": "Runner",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "index.js",
+            "line": 6
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/cli.js",
+            "line": 4,
+            "description": "Filters arguments given and sets them to parameters",
+            "itemtype": "method",
+            "name": "filterArguments",
+            "params": [
+                {
+                    "name": "args",
+                    "description": "",
+                    "type": "String[]"
+                },
+                {
+                    "name": "params",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "inject",
+                    "description": "",
+                    "type": "String[]",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String[]"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/cli.js",
+            "line": 65,
+            "description": "Prepares the environment for kobold",
+            "itemtype": "method",
+            "name": "prepareEnvironment",
+            "params": [
+                {
+                    "name": "argv",
+                    "description": "",
+                    "type": "String[]"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String[]"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 30,
+            "description": "Initializes the kobold test-runner",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "verbose",
+                            "description": "",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "highlightOnSuccess",
+                            "description": "Create highlighting for successful tests?",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "build",
+                            "description": "Build identifier",
+                            "type": "String",
+                            "optional": true
+                        },
+                        {
+                            "name": "failForOrphans",
+                            "description": "Fail test when screen is missing",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "failOnAdditions",
+                            "description": "Fail test when new screen was added",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "blinkDiff",
+                            "description": "Image-diff options",
+                            "type": "Object",
+                            "optional": true
+                        },
+                        {
+                            "name": "source",
+                            "description": "Source storage adapter configuration",
+                            "type": "Object",
+                            "optional": true,
+                            "optdefault": "options.storage"
+                        },
+                        {
+                            "name": "destination",
+                            "description": "Destination storage adapter configuration",
+                            "type": "Object",
+                            "optional": true,
+                            "optdefault": "options.storage"
+                        },
+                        {
+                            "name": "storage",
+                            "description": "General storage adapter configuration",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 71,
+            "description": "Gets the source",
+            "itemtype": "method",
+            "name": "getSource",
+            "return": {
+                "description": "",
+                "type": "StorageAdapter"
+            },
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 81,
+            "description": "Gets the destination",
+            "itemtype": "method",
+            "name": "getDestination",
+            "return": {
+                "description": "",
+                "type": "StorageAdapter"
+            },
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 92,
+            "description": "Determines the state of screens",
+            "itemtype": "method",
+            "name": "_determineScreensState",
+            "params": [
+                {
+                    "name": "screens",
+                    "description": "",
+                    "type": "String[]"
+                }
+            ],
+            "return": {
+                "description": "}",
+                "type": "Orphans:  <string[]>, additions:  <string[]>, comparisons:  <string[]>"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 160,
+            "description": "Determines all the tests",
+            "itemtype": "method",
+            "name": "_determineTests",
+            "return": {
+                "description": "With { orphans: <string[]>, additions: <string[]>, comparisons: <string[]> }",
+                "type": "Promise"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 181,
+            "description": "Converts the filename to a user-friendly test-name",
+            "itemtype": "method",
+            "name": "_getTestName",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 194,
+            "description": "Runs all orphan tests",
+            "itemtype": "method",
+            "name": "_runOrphanTests",
+            "params": [
+                {
+                    "name": "orphans",
+                    "description": "",
+                    "type": "String[]"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 210,
+            "description": "Runs an orphan test",
+            "itemtype": "method",
+            "name": "_runOrphanTest",
+            "params": [
+                {
+                    "name": "orphanName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 234,
+            "description": "Runs all additions tests",
+            "itemtype": "method",
+            "name": "_runAdditionsTests",
+            "params": [
+                {
+                    "name": "additions",
+                    "description": "",
+                    "type": "String[]"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 250,
+            "description": "Runs an addition test",
+            "itemtype": "method",
+            "name": "_runAdditionsTest",
+            "params": [
+                {
+                    "name": "additionName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 275,
+            "description": "Runs all comparison tests",
+            "itemtype": "method",
+            "name": "_runComparisonTests",
+            "params": [
+                {
+                    "name": "comparisons",
+                    "description": "",
+                    "type": "String[]"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 292,
+            "description": "Runs a comparison test",
+            "itemtype": "method",
+            "name": "_runComparisonTest",
+            "params": [
+                {
+                    "name": "comparisonName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 352,
+            "description": "Run tests",
+            "itemtype": "method",
+            "name": "run",
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 381,
+            "description": "Archiving test-results",
+            "itemtype": "method",
+            "name": "_archiveTest",
+            "params": [
+                {
+                    "name": "passed",
+                    "description": "",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "testName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "approvedImage",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "buildImage",
+                    "description": "",
+                    "type": "PNGImage"
+                },
+                {
+                    "name": "highlightImage",
+                    "description": "",
+                    "type": "PNGImage"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 410,
+            "description": "Processes the comparison test results",
+            "itemtype": "method",
+            "name": "_processTestResults",
+            "params": [
+                {
+                    "name": "comparisonName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "blinkDiff",
+                    "description": "",
+                    "type": "BlinkDiff"
+                },
+                {
+                    "name": "resultCode",
+                    "description": "",
+                    "type": "Int"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 442,
+            "description": "Add 'describe' section to test-suite",
+            "itemtype": "method",
+            "name": "_describe",
+            "params": [
+                {
+                    "name": "title",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 455,
+            "description": "Add 'it' section to the test-suite",
+            "itemtype": "method",
+            "name": "_it",
+            "params": [
+                {
+                    "name": "title",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 468,
+            "description": "Add 'before' section to the test-suite",
+            "itemtype": "method",
+            "name": "_before",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 480,
+            "description": "Add 'beforeEach' section to the test-suite",
+            "itemtype": "method",
+            "name": "_beforeEach",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 492,
+            "description": "Add 'after' section to the test-suite",
+            "itemtype": "method",
+            "name": "_after",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "lib/kobold.js",
+            "line": 504,
+            "description": "Add 'afterEach' section to the test-suite",
+            "itemtype": "method",
+            "name": "_afterEach",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Object"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Kobold"
+        },
+        {
+            "file": "index.js",
+            "line": 10,
+            "description": "Configures Kobold and runs the tests",
+            "itemtype": "method",
+            "name": "koboldRunner",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "Runner"
+        },
+        {
+            "file": "index.js",
+            "line": 21,
+            "description": "Kobold class",
+            "static": 1,
+            "itemtype": "property",
+            "name": "Kobold",
+            "type": "{Kobold}",
+            "class": "Runner"
+        },
+        {
+            "file": "index.js",
+            "line": 30,
+            "description": "Version of module",
+            "static": 1,
+            "itemtype": "property",
+            "name": "version",
+            "type": "{string|version|exports.version}",
+            "class": "Runner"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nInitializes the kobold test-runner",
+            "line": " lib/kobold.js:30"
+        }
+    ]
+}
