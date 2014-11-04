@@ -10,6 +10,11 @@ Visual regression testing framework, comparing screenshots from multiple builds.
 [![NPM](https://nodei.co/npm/kobold.png?downloads=true)](https://nodei.co/npm/kobold/)
 
 
+[API-Documentation](http://yahoo.github.io/kobold/docs/)
+
+[Coverage Report](http://yahoo.github.io/kobold/coverage/lcov-report/)
+
+
 **Table of Contents**
 * [Installation](#installation)
 * [Usage](#usage)
