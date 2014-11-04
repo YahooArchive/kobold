@@ -18,6 +18,7 @@ Visual regression testing framework, comparing screenshots from multiple builds.
 **Table of Contents**
 * [Installation](#installation)
 * [Usage](#usage)
+* [Results](#results)
 * [API-Documentation](#api-documentation)
 * [Tests](#tests)
 * [Project Naming](#project-name)
@@ -82,6 +83,13 @@ Kobold is built on top of Mocha and therefore can also accept all of its paramet
 ```shell
 ./node_modules/.bin/kobold --slow 3000 --fail-orphans --fail-additions --reporter dot --test-path ./test/ui/regression
 ```
+
+##Results
+Kobold creates a regular test report as if the tests were written, and it creates the following images, comparing the approved (left) with the build screenshot (right), pointing out the differences (middle).
+* Hidden or lost section [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_hidden_regression.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_hidden_regression.png)
+* Messed-up sorting [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_sorting_regression.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_sorting_regression.png)
+* Styling regressions [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_style_regression.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_style_regression.png)
+* Text formatting [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_text_regression.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_text_regression.png)
 
 ##API-Documentation
 
