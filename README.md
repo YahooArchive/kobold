@@ -86,10 +86,11 @@ Kobold is built on top of Mocha and therefore can also accept all of its paramet
 
 ##Results
 Kobold creates a regular test report as if the tests were written, and it creates the following images, comparing the approved (left) with the build screenshot (right), pointing out the differences (middle).
-* Hidden or lost section [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_hidden_regression.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_hidden_regression.png)
-* Messed-up sorting [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_sorting_regression.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_sorting_regression.png)
-* Styling regressions [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_style_regression.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_style_regression.png)
-* Text formatting [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_text_regression.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_text_regression.png)
+* Changed color [![Screen1](https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Color.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Color.png)
+* Missing items [![Screen2](https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Missing.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Missing.png)
+* Messed-up sorting [![Screen3](https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Sort.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Sort.png)
+* Image swap [![Screen4](https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Swap.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Swap.png)
+* Text formatting [![Screen4](https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Upper.png)](https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Upper.png)
 
 ##API-Documentation
 

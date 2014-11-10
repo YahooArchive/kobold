@@ -1,6 +1,6 @@
 {
   "name": "kobold",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Visual regression testing framework, comparing screenshots from multiple builds",
   "license": "MIT",
   "main": "index.js",
