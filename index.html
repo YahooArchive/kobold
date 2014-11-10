@@ -63,18 +63,15 @@
 
 <p>Install this module with the following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm install kobold
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm install kobold</pre></div>
 
 <p>Add the module to your <code>package.json</code> dependencies:</p>
 
-<div class="highlight highlight-shell"><pre>npm install --save kobold
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm install --save kobold</pre></div>
 
 <p>Add the module to your <code>package.json</code> dev-dependencies:</p>
 
-<div class="highlight highlight-shell"><pre>npm install --save-dev kobold
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm install --save-dev kobold</pre></div>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
@@ -82,13 +79,11 @@
 <p>Kobold can be run by executing the bin-script that is located in the <code>bin</code> directory. The only required parameter
 is the path to the folder holding all screens (images/screenshots) that should be tested.</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold ./test/ui/regression
-</pre></div>
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold ./test/ui/regression</pre></div>
 
 <p>Instead of implicitly using the last argument as the <code>test-path</code>, you can also be more specific and use the <code>--test-path</code> parameter:</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --test-path ./test/ui/regression
-</pre></div>
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --test-path ./test/ui/regression</pre></div>
 
 <p>By default, Kobold will look for three directories:</p>
 
@@ -103,25 +98,21 @@ is the path to the folder holding all screens (images/screenshots) that should b
 
 <p>The folder names for <code>approved</code>, <code>build</code>, and <code>highlight</code> can be changed by supplying the parameters <code>--approved-folder</code>, <code>--build-folder</code>, and <code>--highlight-folder</code> respectively:</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --approved-folder <span class="s2">"golden"</span> --highlight-folder <span class="s2">"differences"</span> ./test/ui/regression
-</pre></div>
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --approved-folder <span class="s2">"golden"</span> --highlight-folder <span class="s2">"differences"</span> ./test/ui/regression</pre></div>
 
 <p>This test-run will look for <code>golden</code> and <code>differences</code> for the <code>approved</code> and <code>highlight</code> folder respectively instead of the default folder names. In this cases <code>build</code> was not changed.</p>
 
 <p>In some cases, the tests should fail when previously approved screens are not anymore available in the recent build. Use the <code>--fail-orphans</code> flag to make these tests fail:</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --fail-orphans ./test/ui/regression
-</pre></div>
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --fail-orphans ./test/ui/regression</pre></div>
 
 <p>The <code>--fail-additions</code> flag will fail tests for screens that are new.</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --fail-orphans --fail-additions ./test/ui/regression
-</pre></div>
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --fail-orphans --fail-additions ./test/ui/regression</pre></div>
 
 <p>Kobold is built on top of Mocha and therefore can also accept all of its parameters.</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --slow <span class="m">3000</span> --fail-orphans --fail-additions --reporter dot --test-path ./test/ui/regression
-</pre></div>
+<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --slow 3000 --fail-orphans --fail-additions --reporter dot --test-path ./test/ui/regression</pre></div>
 
 <h2>
 <a id="results" class="anchor" href="#results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results</h2>
@@ -129,13 +120,15 @@ is the path to the folder holding all screens (images/screenshots) that should b
 <p>Kobold creates a regular test report as if the tests were written, and it creates the following images, comparing the approved (left) with the build screenshot (right), pointing out the differences (middle).</p>
 
 <ul>
-<li>Hidden or lost section <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_hidden_regression.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_hidden_regression.png" alt="Screen1"></a>
+<li>Changed color <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Color.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Color.png" alt="Screen1"></a>
 </li>
-<li>Messed-up sorting <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_sorting_regression.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_sorting_regression.png" alt="Screen1"></a>
+<li>Missing items <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Missing.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Missing.png" alt="Screen2"></a>
 </li>
-<li>Styling regressions <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_style_regression.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_style_regression.png" alt="Screen1"></a>
+<li>Messed-up sorting <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Sort.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Sort.png" alt="Screen3"></a>
 </li>
-<li>Text formatting <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/wikipedia_text_regression.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/wikipedia_text_regression.png" alt="Screen1"></a>
+<li>Image swap <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Swap.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Swap.png" alt="Screen4"></a>
+</li>
+<li>Text formatting <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Upper.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Upper.png" alt="Screen4"></a>
 </li>
 </ul>
 
@@ -144,8 +137,7 @@ is the path to the folder holding all screens (images/screenshots) that should b
 
 <p>Generate the documentation with following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm run docs
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm run docs</pre></div>
 
 <p>The documentation will be generated in the <code>docs</code> folder of the module root.</p>
 
@@ -154,8 +146,7 @@ is the path to the folder holding all screens (images/screenshots) that should b
 
 <p>Run the tests with the following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm run <span class="nb">test</span>
-</pre></div>
+<div class="highlight highlight-shell"><pre>npm run <span class="nf">test</span></pre></div>
 
 <p>The code-coverage will be written to the <code>coverage</code> folder in the module root.</p>
 
