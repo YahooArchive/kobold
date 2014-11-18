@@ -3,6 +3,7 @@ Changelog
 
 v0.9.2
 * Add screen dependent config
+* Add TODO file
 
 v0.9.1 - 11/09/14
 * Update examples
