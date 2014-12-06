@@ -1,7 +1,7 @@
 Changelog
 =========
 
-v0.9.2 - 11/05/14
+v0.9.3 - 11/05/14
 * Use "comparison" for comparison options instead of "blinkDiff". "blinkDiff" is deprecated.
 * Added global config
 * Added screen dependent config
