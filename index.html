@@ -49,8 +49,9 @@
 
 <ul>
 <li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#results">Results</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#command-line">Command-Line</a></li>
+<li><a href="#examples">Examples</a></li>
 <li><a href="#api-documentation">API-Documentation</a></li>
 <li><a href="#tests">Tests</a></li>
 <li><a href="#project-name">Project Naming</a></li>
@@ -65,6 +66,12 @@
 
 <div class="highlight highlight-shell"><pre>npm install kobold</pre></div>
 
+<p>Install this module globally with the following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm install -g kobold</pre></div>
+
+<p>This will make sure that you don't have to enter the whole path when running Kobold.</p>
+
 <p>Add the module to your <code>package.json</code> dependencies:</p>
 
 <div class="highlight highlight-shell"><pre>npm install --save kobold</pre></div>
@@ -74,50 +81,104 @@
 <div class="highlight highlight-shell"><pre>npm install --save-dev kobold</pre></div>
 
 <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
-<p>Kobold can be run by executing the bin-script that is located in the <code>bin</code> directory. The only required parameter
-is the path to the folder holding all screens (images/screenshots) that should be tested.</p>
+<p>Kobold can be executed by running <code>kobold</code> script in the <code>bin</code> directory of the package. When you installed the module globally, then you can us only <code>kobold</code> to run it.</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold ./test/ui/regression</pre></div>
+<p>Only one parameter is required to run the tests:</p>
 
-<p>Instead of implicitly using the last argument as the <code>test-path</code>, you can also be more specific and use the <code>--test-path</code> parameter:</p>
+<div class="highlight highlight-shell"><pre>kobold <span class="pl-s3">test</span>/ui/regression</pre></div>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --test-path ./test/ui/regression</pre></div>
+<p>With this parameter, Kobold starts running tests on the <code>test/ui/regression</code> directory. It analyzes what screens were already approved, what screens are available in the current build, and what screens it has to compare. Then, it creates the test-code and executes the image-comparison, creating the test results in the <code>highlight</code> directory.</p>
 
-<p>By default, Kobold will look for three directories:</p>
+<p>Instead of implicitly using the last argument for the test-path, you can also be more specific and supply the <code>--test-path</code> parameter:</p>
+
+<div class="highlight highlight-shell"><pre>kobold --test-path <span class="pl-s3">test</span>/ui/regression</pre></div>
+
+<p>By default, Kobold will look for four directories:</p>
 
 <ul>
 <li>
-<code>approved</code> - Folder with all previously approved screens. These are the "golden standard" images that will be used to compare them to.</li>
+<code>approved</code> - All approved screens should be available in this folder. These are the "golden standard" images that will be used to compare them to build screens.</li>
 <li>
-<code>build</code> - Folder with most recent screens taken from an application. This is most likely done by some Selenium tests. These images will be compared to the images in the <code>approved</code> folder.</li>
+<code>build</code> - Screens that were just taken are saved in this folder. This is most likely done by some Selenium tests, taking screenshots and saving them in this directory. These images will be compared to the images in the <code>approved</code> folder, creating comparison result images in <code>highlight</code>.</li>
 <li>
-<code>highlight</code> - Folder holding the results of the latest test-run. Here, the images will highlight the differences between the <code>approved</code>-image and the <code>build</code>-image.</li>
+<code>highlight</code> - Image comparison results of the latest test-run are saved in this folder. These images will highlight the differences between the <code>approved</code>-image and the <code>build</code>-image.</li>
+<li>
+<code>config</code> - Custom configuration files (.js or .json) for image specific comparison options. Sometimes, it is helpful to tune the comparison of a specific image. These options overwrite globally set comparison options. They are also optional. See the Blink-Diff Project WebSite for more information on these options.</li>
 </ul>
 
-<p>The folder names for <code>approved</code>, <code>build</code>, and <code>highlight</code> can be changed by supplying the parameters <code>--approved-folder</code>, <code>--build-folder</code>, and <code>--highlight-folder</code> respectively:</p>
+<p>The folder names for <code>approved</code>, <code>build</code>, <code>highlight</code>, and <code>config</code> can be changed by supplying the parameters <code>--approved-folder</code>, <code>--build-folder</code>, <code>--highlight-folder</code>, and <code>--config-folder</code> respectively:</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --approved-folder <span class="s2">"golden"</span> --highlight-folder <span class="s2">"differences"</span> ./test/ui/regression</pre></div>
+<div class="highlight highlight-shell"><pre>kobold --approved-folder <span class="pl-s1"><span class="pl-pds">"</span>golden<span class="pl-pds">"</span></span> --highlight-folder <span class="pl-s1"><span class="pl-pds">"</span>differences<span class="pl-pds">"</span></span>/test/ui/regression</pre></div>
 
-<p>This test-run will look for <code>golden</code> and <code>differences</code> for the <code>approved</code> and <code>highlight</code> folder respectively instead of the default folder names. In this cases <code>build</code> was not changed.</p>
+<p>This test-run will look for <code>golden</code> and <code>differences</code> for the <code>approved</code> and <code>highlight</code> folder respectively instead of using the default folder names. In this specific case, <code>build</code> was not changed.</p>
 
-<p>In some cases, the tests should fail when previously approved screens are not anymore available in the recent build. Use the <code>--fail-orphans</code> flag to make these tests fail:</p>
+<p>Sometimes, you want the tests to fail when previously approved screens are missing from the <code>build</code> directory. This can be the case when for example the tests that created these screenshots didn't fully run. Use the <code>--fail-orphans</code> flag to make these tests fail:</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --fail-orphans ./test/ui/regression</pre></div>
+<div class="highlight highlight-shell"><pre>kobold --fail-orphans <span class="pl-s3">test</span>/ui/regression</pre></div>
 
-<p>The <code>--fail-additions</code> flag will fail tests for screens that are new.</p>
+<p>The <code>--fail-additions</code> flag will fail tests for screens that are new, screens that were never approved before.</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --fail-orphans --fail-additions ./test/ui/regression</pre></div>
+<div class="highlight highlight-shell"><pre>kobold --fail-orphans --fail-additions <span class="pl-s3">test</span>/ui/regression</pre></div>
 
-<p>Kobold is built on top of Mocha and therefore can also accept all of its parameters.</p>
+<p>Kobold also supports all Mocha parameters which can be interspersed with the Kobold parameters:</p>
 
-<div class="highlight highlight-shell"><pre>./node_modules/.bin/kobold --slow 3000 --fail-orphans --fail-additions --reporter dot --test-path ./test/ui/regression</pre></div>
+<div class="highlight highlight-shell"><pre>kobold --slow 3000 --fail-orphans --fail-additions --reporter dot --test-path <span class="pl-s3">test</span>/ui/regression</pre></div>
 
 <h2>
-<a id="results" class="anchor" href="#results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results</h2>
+<a id="command-line" class="anchor" href="#command-line" aria-hidden="true"><span class="octicon octicon-link"></span></a>Command-Line</h2>
 
-<p>Kobold creates a regular test report as if the tests were written, and it creates the following images, comparing the approved (left) with the build screenshot (right), pointing out the differences (middle).</p>
+<p>Since Kobold is built on top of Mocha, it supports all of its parameters in addition to the following:</p>
+
+<ul>
+<li>
+<code>approved-folder</code> - Name of the approved folder (default: 'approved')</li>
+<li>
+<code>build-folder</code> - Name of the build folder (default: 'build')</li>
+<li>
+<code>highlight-folder</code> - Name of the highlight folder (default: 'highlight')</li>
+<li>
+<code>config-folder</code> - Name of the config folder (default: 'config')</li>
+<li>
+<code>fail-orphans</code> - Flag that determines that tests should fail when screens that were previously approved, being in the <code>approve</code> folder, are not found in the <code>build</code> folder.</li>
+<li>
+<code>fail-additions</code> - Flag that determines that tests should fail when unapproved screens are found in the <code>build</code> folder, meaning screens that are missing from the <code>approve</code> folder.</li>
+<li>
+<code>test-path</code> - Path to directory with all test related folders as mentioned above (required). Uses implicitly the last parameter element when none is given.</li>
+<li>
+<code>config</code> - Path to a config file (.js or .json) that is used to overwrite comparison options. (default: none) See the Blink-Diff Project WebSite for more information on these options.</li>
+</ul>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>The global configuration file that can be selected by supplying <code>--config</code> to the command-line describes default-values for the comparison. </p>
+
+<p>Here is an example of the file (<code>config.js</code> - can also be a JSON file):</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-sv">module</span>.exports <span class="pl-k">=</span> {
+    <span class="pl-s1"><span class="pl-pds">"</span>delta<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">35</span> <span class="pl-c">// Changing the distance of pixel-comparison</span>
+};</pre></div>
+
+<p>This file then can be called as follows:</p>
+
+<div class="highlight highlight-shell"><pre>kobold --config config.js <span class="pl-s3">test</span>/ui/regression</pre></div>
+
+<p>Configuration files for specific screens on the other hand describe only the comparison options for that screen. 
+Here is an example for a screen that is named "YDN_Missing"; the path is <code>config/YDN_Missing.json</code> (could also be a <code>.js</code>):</p>
+
+<div class="highlight highlight-javascript"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>outputBackgroundOpacity<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">0.3</span>,
+    <span class="pl-s1"><span class="pl-pds">"</span>outputBackgroundGreen<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">100</span>
+}</pre></div>
+
+<p>This example will make the background for the comparison image look greener, and lightens-up the whole comparison by reducing the opacity of the background-mask.</p>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Kobold creates a regular test report as if the tests were manually written, and it also creates the following images, comparing the approved (left) with the build screenshot (right), pointing out the differences (middle).</p>
 
 <ul>
 <li>Changed color <a href="https://raw.githubusercontent.com/yahoo/kobold/master/examples/highlight/YDN_Color.png"><img src="https://raw.githubusercontent.com/yahoo/kobold/master/images/YDN_Color.png" alt="Screen1"></a>
@@ -132,28 +193,32 @@ is the path to the folder holding all screens (images/screenshots) that should b
 </li>
 </ul>
 
+<p>These examples can be found in the <code>examples</code> folder. The above results were produced by running the following command in the project root with a globally installed Kobold:</p>
+
+<div class="highlight highlight-shell"><pre>kobold <span class="pl-s3">test</span>/ui/regression</pre></div>
+
 <h2>
 <a id="api-documentation" class="anchor" href="#api-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>API-Documentation</h2>
 
-<p>Generate the documentation with following command:</p>
+<p>Generate the API-documentation with following command:</p>
 
 <div class="highlight highlight-shell"><pre>npm run docs</pre></div>
 
-<p>The documentation will be generated in the <code>docs</code> folder of the module root.</p>
+<p>This will generate the source-code documentation in the <code>docs</code> folder of the module root.</p>
 
 <h2>
 <a id="tests" class="anchor" href="#tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests</h2>
 
 <p>Run the tests with the following command:</p>
 
-<div class="highlight highlight-shell"><pre>npm run <span class="nf">test</span></pre></div>
+<div class="highlight highlight-shell"><pre>npm run <span class="pl-s3">test</span></pre></div>
 
 <p>The code-coverage will be written to the <code>coverage</code> folder in the module root.</p>
 
 <h2>
 <a id="project-name" class="anchor" href="#project-name" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Name</h2>
 
-<p>A Kobold is a gnome that can make itself invisible and is often the source of nuisances, pretty much like visual regressions.</p>
+<p>A Kobold is a gnome that can make itself invisible and is often the source of nuisances - so, pretty much like visual regressions.</p>
 
 <h2>
 <a id="third-party-libraries" class="anchor" href="#third-party-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third-party libraries</h2>
