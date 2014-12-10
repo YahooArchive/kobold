@@ -4,6 +4,7 @@
 // Copyrights licensed under the Mit License. See the accompanying LICENSE file for terms.
 
 var cli = require('../lib/cli');
+var path = require('path');
 
 /**
  * Runs mocha with arguments
@@ -17,7 +18,7 @@ function runMocha (argv) {
 	process.argc = argv.length;
 
 	// Run Mocha
-	require(__dirname + '/../node_modules/.bin/_mocha');
+	require(path.join(__dirname, '..', 'node_modules', 'mocha', 'bin', '_mocha'));
 }
 
 
