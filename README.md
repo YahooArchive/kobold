@@ -3,17 +3,20 @@ Kobold
 
 Visual regression testing framework, comparing screenshots from multiple builds.
 
+[![Build Status](https://img.shields.io/travis/yahoo/kobold.svg)](http://travis-ci.org/yahoo/kobold)
+[![Coveralls Coverage](https://img.shields.io/coveralls/yahoo/kobold.svg)](https://coveralls.io/r/yahoo/kobold)
+[![Code Climate Grade](https://img.shields.io/codeclimate/github/yahoo/kobold.svg)](https://codeclimate.com/github/yahoo/kobold)
 
-[![Build Status](https://secure.travis-ci.org/yahoo/kobold.png)](http://travis-ci.org/yahoo/kobold)
-[![npm version](https://badge.fury.io/js/kobold.svg)](http://badge.fury.io/js/kobold)
+[![NPM version](https://badge.fury.io/js/kobold.svg)](https://www.npmjs.com/package/kobold)
+[![NPM License](https://img.shields.io/npm/l/blink-diff.svg)](https://www.npmjs.com/package/kobold)
 
-[![NPM](https://nodei.co/npm/kobold.png?downloads=true)](https://nodei.co/npm/kobold/)
+[![NPM](https://nodei.co/npm/kobold.png?downloads=true&stars=true)](https://www.npmjs.com/package/kobold)
+[![NPM](https://nodei.co/npm-dl/kobold.png?months=3&height=2)](https://www.npmjs.com/package/kobold)
 
+[![Coverage Report](https://img.shields.io/badge/Coverage_Report-Available-blue.svg)](http://yahoo.github.io/kobold/coverage/lcov-report/)
+[![API Documentation](https://img.shields.io/badge/API_Documentation-Available-blue.svg)](http://yahoo.github.io/kobold/docs/)
 
-[API-Documentation](http://yahoo.github.io/kobold/docs/)
-
-[Coverage Report](http://yahoo.github.io/kobold/coverage/lcov-report/)
-
+[![Gitter Support](https://img.shields.io/badge/Support-Gitter_IM-yellow.svg)](https://gitter.im/preceptorjs/support)
 
 **Table of Contents**
 * [Installation](#installation)
