@@ -8,7 +8,7 @@ Visual regression testing framework, comparing screenshots from multiple builds.
 [![Code Climate Grade](https://img.shields.io/codeclimate/github/yahoo/kobold.svg)](https://codeclimate.com/github/yahoo/kobold)
 
 [![NPM version](https://badge.fury.io/js/kobold.svg)](https://www.npmjs.com/package/kobold)
-[![NPM License](https://img.shields.io/npm/l/blink-diff.svg)](https://www.npmjs.com/package/kobold)
+[![NPM License](https://img.shields.io/npm/l/kobold.svg)](https://www.npmjs.com/package/kobold)
 
 [![NPM](https://nodei.co/npm/kobold.png?downloads=true&stars=true)](https://www.npmjs.com/package/kobold)
 [![NPM](https://nodei.co/npm-dl/kobold.png?months=3&height=2)](https://www.npmjs.com/package/kobold)
