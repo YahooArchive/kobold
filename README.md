@@ -80,7 +80,7 @@ By default, Kobold will look for four directories:
 The folder names for ```approved```, ```build```, ```highlight```, and ```config``` can be changed by supplying the parameters ```--approved-folder```, ```--build-folder```, ```--highlight-folder```, and ```--config-folder``` respectively:
  
 ```shell
-kobold --approved-folder "golden" --highlight-folder "differences"/test/ui/regression
+kobold --approved-folder "golden" --highlight-folder "differences" /test/ui/regression
 ```
 This test-run will look for ```golden``` and ```differences``` for the ```approved``` and ```highlight``` folder respectively instead of using the default folder names. In this specific case, ```build``` was not changed.
 
